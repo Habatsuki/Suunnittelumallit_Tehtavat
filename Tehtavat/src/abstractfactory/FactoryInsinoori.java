@@ -1,0 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package abstractfactory;
+
+/**
+ *
+ * @author hannu.korhonen
+ */
+public class FactoryInsinoori extends VaateMaku {
+
+    public Vaate getVaate(String vaateType) {
+        if(vaateType.equalsIgnoreCase("LIPPIS")){
+            return new BossVaateLippis();         
+        }else if(vaateType.equalsIgnoreCase("T-PAITA")){
+            return new BossVaateTPaita();
+        }else if(vaateType.equalsIgnoreCase("FARMARIT")){
+            return new BossVaateFarmari();
+        }else if(vaateType.equalsIgnoreCase("KENGAT")){
+            return new BossVaateKengat();
+        }	 
+        return null;
+    }
+}
