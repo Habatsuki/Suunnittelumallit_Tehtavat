@@ -17,20 +17,16 @@ import java.util.logging.Logger;
  */
 public class ClockTimer extends Observable implements Runnable {
     
-    int hours;
-    int minutes;
-    int seconds;
     Calendar calendar;
     
     public ClockTimer() {
         calendar = new GregorianCalendar();
-        hours = calendar.get(Calendar.HOUR_OF_DAY);
-        minutes = calendar.get(Calendar.MINUTE);
-        seconds = calendar.get(Calendar.SECOND);
     }
     
     public void run() {
         while (true) {
+            tick();
+            
             setChanged();
             this.notifyObservers(calendar);
             
@@ -42,32 +38,7 @@ public class ClockTimer extends Observable implements Runnable {
         }
     }
     
-    /*
-    public String getTime() {
-        if (seconds == 59 && minutes == 59 && hours == 23) {
-            seconds = 0;
-            minutes = 0;
-            hours = 0;
-        } else if (seconds == 59 && minutes == 59) {
-            hours++;
-            minutes = 0;
-            seconds = 0; 
-        } else if (seconds == 59) {
-            minutes++;
-            seconds = 0;
-        } else {
-            seconds++;
-        }
-        
-        return hours + ":" + minutes + ":" + seconds;
-    }
-    */
-    
     public void tick() {
-        Calendar calendar = new GregorianCalendar();
-        hours = calendar.get(Calendar.HOUR_OF_DAY);
-        minutes = calendar.get(Calendar.MINUTE);
-        seconds = calendar.get(Calendar.SECOND);
+        calendar = new GregorianCalendar();
     }
-    
 }
